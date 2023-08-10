@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));  
 app.use(express.static('public'));  
+
 //connects to index file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
@@ -48,6 +49,7 @@ const createNote = (body, notesArr) => {
     )
     return newNote
 }
+
 //Deletes old note
 app.delete('/api/notes/:id', (req, res) => {
     deleteNote(req.params.id, dataBase);
